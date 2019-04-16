@@ -18,7 +18,7 @@ jobs = []
 pages = []
 domain = 'https://job42.ru'
 
-url = 'https://job42.ru/vacancy/it-i-internet'#'https://job42.ru/vacancy/programmist-java'
+url = 'https://job42.ru/vacancy/it-i-internet'  #'https://job42.ru/vacancy/programmist-java'
 pages.append(url)
 web_drv = webdriver.Firefox()
 web_drv.get(url)
@@ -28,7 +28,9 @@ last_tag = re.findall(re.compile('vacancy-item_*.{5}'), str(data))[0]
 
 bs_obj = bs(data, 'html.parser')
 
-pagination = bs_obj.find_all('a', attrs={'class': 'ui button item floated left page-item'})
+pagination = bs_obj.find_all('a', attrs={
+                            'class': 'ui button item floated left page-item'
+                            })
 if pagination:
     for page in pagination:
         pages.append(domain + page['href'])
