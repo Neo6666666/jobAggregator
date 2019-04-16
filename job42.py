@@ -29,8 +29,7 @@ last_tag = re.findall(re.compile('vacancy-item_*.{5}'), str(data))[0]
 bs_obj = bs(data, 'html.parser')
 
 pagination = bs_obj.find_all('a', attrs={
-                            'class': 'ui button item floated left page-item'
-                            })
+                            'class': 'ui button item floated left page-item'})
 if pagination:
     for page in pagination:
         pages.append(domain + page['href'])
